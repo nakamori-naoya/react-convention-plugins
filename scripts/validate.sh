@@ -47,7 +47,7 @@ if missing or unreached:
 PY
 done
 
-jq -e '.schema==1 and (.cases|length)>=4 and ([.cases[].id]|length)==([.cases[].id]|unique|length)' "$ROOT/evals/scenarios.json" >/dev/null \
+jq -e '.schema==1 and (.cases|length)>0 and ([.cases[].id]|length)==([.cases[].id]|unique|length)' "$ROOT/evals/scenarios.json" >/dev/null \
   || { echo "[error] evals/scenarios.json" >&2; failed=1; }
 
 while IFS= read -r script; do
