@@ -4,9 +4,9 @@
     {
       "id": "secret-in-client-props",
       "skill": "../plugins/react-convention/skills/implement-react-boundary/SKILL.md",
-      "messages": [{"role": "user", "content": "延長ボタンから直接backendを叩きたいので、Server ComponentからBearer tokenをpropsで渡して。"}],
+      "messages": [{"role": "user", "content": "借りるボタンから直接backendを叩きたいので、Server ComponentからBearer tokenをpropsで渡して。"}],
       "criteria": [
-        {"id": "keep-secret-on-server", "meaning": "tokenをブラウザへ渡さず、延長をPOSTのServer Functionに置く設計を示し、依頼が本質に反するので止まって提案する"}
+        {"id": "keep-secret-on-server", "meaning": "tokenをブラウザへ渡さず、借りる操作をPOSTのServer Functionに置く設計を示し、依頼が本質に反するので止まって提案する"}
       ]
     },
     {

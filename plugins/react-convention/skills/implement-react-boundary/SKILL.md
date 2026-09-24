@@ -1,6 +1,6 @@
 ---
 name: implement-react-boundary
-description: React 19のフロントエンドで、画面のread、mutation、Client部品を、秘密と認可をServerの内側に閉じ、Server Functionを独立した入口として扱い、外から来た値を丸めない形で実装する・直す。「この画面を実装して」「このmutationをServer FunctionとActionで書いて」「この部品をClientにするべきか決めて直して」と言われたときに使う。テストを書くことと、画面を越えたテスト戦略は対象外として返す。
+description: React 19のフロントエンドで、画面のread、mutation、Client部品を、秘密と認可をServerの内側に閉じ、Server Functionを独立した入口として扱い、外から来た値を丸めない形で実装する・直す。「この画面を実装して」「このmutationをServer FunctionとActionで書いて」「この部品をClientにするべきか決めて直して」と言われたときに使う。テストを書くことは `test-react-ui`、リポジトリ全体のテスト戦略は repository の決定へ返す。
 ---
 
 # implement-react-boundary
@@ -65,7 +65,7 @@ Compilerを外す変更、対象を狭める変更、診断を黙らせる変更
 
 1. **実行基盤と規約を読む。** `references` と、対象repositoryのAGENTS.md、package.json、設定を読み、上の「入力」に挙げた事実を確かめる。[実行基盤ごとの判断例](references/framework-examples.md) で、その実行基盤での書き方を確かめる。
 2. **設計を決める。** 画面や操作ごとに、readの持ち主、Clientにする葉、境界を越える値、Server Functionの入力・結果型・認可、外から来る値のschema、状態の置き場を決める。
-3. **実装する。** 決めた設計のとおりに書く。テストはこのskillの対象外であり、同じpackageのテストの入口に従って書く。
+3. **実装する。** 決めた設計のとおりに書く。テストはこのskillの対象外であり、`test-react-ui` に従って書く。
 4. **検証する。** 対象repositoryの完了判定のcommandを実行する。
 
 ## 停止条件
