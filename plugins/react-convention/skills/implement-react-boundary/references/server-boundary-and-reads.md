@@ -26,4 +26,4 @@ Client側のcacheのkeyには、結果を変えるscope（利用者、session、
 
 ## 判断例（図書館の貸出）
 
-利用者の「借りている本」の一覧は、Server Componentが持つ。Server Componentは、認証済みの利用者IDで貸出を読み、書名、返却期限、延滞かどうかだけを持つDTOに変えて描く。貸出の内部IDの並びや、他の利用者の情報は渡さない。「延長する」ボタンだけがClientの葉で、押すと延長のServer Functionを呼ぶ。一覧を三十秒ごとに取り直す要求は無いので、Clientのcacheは持たない。延長の後は、Server Functionの成功を受けて、Serverの表示を描き直す。
+利用者が「借りている本」の一覧は、Server Componentが持つ。Server Componentは、認証済みの利用者IDで貸出を読み、書名、返却期限、延滞かどうかだけを持つDTOに変えて描く。貸出の内部IDの並びや、他の利用者の情報は渡さない。蔵書の詳細画面では、「借りる」ボタンだけがClientの葉で、押すと貸出のServer Functionを呼ぶ。一覧を三十秒ごとに取り直す要求は無いので、Clientのcacheは持たない。借りた後は、Server Functionの成功を受けて、Serverの表示を描き直す。

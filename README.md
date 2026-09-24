@@ -15,7 +15,7 @@ React 19のフロントエンドを、Server境界、外から来た値、テス
 ```
 
 ```text
-延長のmutationをServer FunctionとActionで書いて。
+本を借りるmutationをServer FunctionとActionで書いて。
 ```
 
 ```text
@@ -24,7 +24,13 @@ React 19のフロントエンドを、Server境界、外から来た値、テス
 
 ## このpackageが持つ判断
 
-`react-convention` は、React 19のフロントエンドで、readを誰が持つか、Clientにする範囲、境界を越えてよい値、Server Functionの入口としての守り方と結果の型、外から来た値を丸めないこと、状態とURLとbrowser storageの置き場、Effectを使ってよい条件、React Compilerを採用したときの純粋さとメモ化、ブラウザ側の防御（CSRF、Cookie、CSP）、部品の責務の分け方を持つ。テストでは、振る舞いを単体、storyとbrowser test、Serverの境界、部品、E2Eのどの層で確かめるか、何を差し替えてよいか、何で確かめ、どう待つかを持つ。リポジトリ全体のテスト戦略と、どの経路をE2Eへ残すかは持たず、repositoryのテスト戦略に従う。
+実装の入口 `implement-react-boundary` は、React 19のフロントエンドで、readを誰が持つか、Clientにする範囲、境界を越えてよい値を決める。Server Functionを独立した入口として守る方法と、その結果の型も決める。
+
+外から来た値を丸めないこと、状態をstate・URL・browser storageのどこに置くか、Effectを使ってよい条件も、この入口が持つ。React Compilerを採用したときの純粋さとメモ化、ブラウザ側の防御（CSRF、Cookie、CSP）、部品の責務の分け方もここにある。
+
+テストの入口 `test-react-ui` は、Reactの振る舞いを単体、storyとbrowser test、Serverの境界、部品、E2Eのどの層で確かめるかを決める。何を差し替えてよいか（テストの環境に無いmodule、外部の境界、時刻の源）と、何で確かめるかも持つ。
+
+持たない判断もある。一つの振る舞いを一つの層で確かめる原則、固定の時間ではなく観測できる条件を期限付きで待つ原則、どの経路をE2Eへ残すかは、repositoryのテスト戦略（`testing-strategy` package）に従う。
 
 ## インストール
 
