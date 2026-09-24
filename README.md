@@ -26,9 +26,9 @@ React 19のフロントエンドを、Server境界、外から来た値、テス
 
 実装の入口 `implement-react-boundary` は、React 19のフロントエンドで、readを誰が持つか、Clientにする範囲、境界を越えてよい値を決める。Server Functionを独立した入口として守る方法と、その結果の型も決める。
 
-外から来た値を丸めないこと、状態をstate・URL・browser storageのどこに置くか、Effectを使ってよい条件も、この入口が持つ。React Compilerを採用したときの純粋さとメモ化、ブラウザ側の防御（CSRF、Cookie、CSP）、部品の責務の分け方もここにある。
+外から来た値を丸めないこと、状態をstate・URL・browser storageのどこに置くか、Effectを使ってよい条件も、この入口が持つ。React Compilerを採用したときの純粋さとメモ化、ブラウザ側の防御（CSRF、Cookie、CSP）、部品の責務の分け方もここにある。部品や関数の名前を業務の言葉で付けるか技術の言葉で付けるかの判断と、コメントを何の言葉で書くかも、この入口が持つ。
 
-テストの入口 `test-react-ui` は、Reactの振る舞いを単体、storyとbrowser test、Serverの境界、部品、E2Eのどの層で確かめるかを決める。何を差し替えてよいか（テストの環境に無いmodule、外部の境界、時刻の源）と、何で確かめるかも持つ。
+テストの入口 `test-react-ui` は、Reactの振る舞いを単体、storyとbrowser test、Serverの境界、部品、E2Eのどの層で確かめるかを決める。何を差し替えてよいか（テストの環境に無いmodule、外部の境界、時刻の源）と、何で確かめるかも持つ。テストのために実装を曲げないことも、ここにある。
 
 持たない判断もある。一つの振る舞いを一つの層で確かめる原則、固定の時間ではなく観測できる条件を期限付きで待つ原則、どの経路をE2Eへ残すかは、repositoryのテスト戦略（`testing-strategy` package）に従う。
 
