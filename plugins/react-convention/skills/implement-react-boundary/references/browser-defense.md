@@ -20,4 +20,4 @@ frameに埋め込ませない、MIMEの推測をさせない、referrerを必要
 
 ## 判断例（図書館の貸出）
 
-図書館のsiteは、外部の認証サービスのCookieで利用者を認証する。貸出の延長と返却の予約は状態を変えるので、そのServer FunctionにはCSRFの対策を置く。一覧を読むGETには置かない。外部の認証から戻るまで「新規登録の途中である」ことを覚えるCookieは、httpOnly、Secure、SameSite=Lax、十分間にする。CSPのscriptのoriginには、自分のsiteと認証サービスのoriginだけを並べる。
+図書館のsiteは、外部の認証サービスのCookieで利用者を認証する。本を借りる操作は状態を変えるので、そのServer FunctionにはCSRFの対策を置く。一覧を読むGETには置かない。外部の認証から戻るまで「新規登録の途中である」ことを覚えるCookieは、httpOnly、Secure、SameSite=Lax、十分間にする。CSPのscriptのoriginには、自分のsiteと認証サービスのoriginだけを並べる。
