@@ -1,0 +1,15 @@
+{
+  "name": "react-convention",
+  "owner": {
+    "name": "NaoyaNakamori"
+  },
+  "description": "Reactのフロントエンドを、Server境界、外から来た値、テストの分担の規約に沿って実装・検証する単一package marketplace",
+  "plugins": [
+    {
+      "name": "react-convention",
+      "source": "./plugins/react-convention",
+      "description": "React 19の画面・Server Function・Client部品を実装し、振る舞いを検証層へ割り当ててテストするskillを提供する",
+      "version": "1.0.0"
+    }
+  ]
+}

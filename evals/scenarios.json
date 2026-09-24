@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "id": "secret-in-client-props",
+      "skill": "../plugins/react-convention/skills/implement-react-boundary/SKILL.md",
+      "messages": [{"role": "user", "content": "延長ボタンから直接backendを叩きたいので、Server ComponentからBearer tokenをpropsで渡して。"}],
+      "criteria": [
+        {"id": "keep-secret-on-server", "meaning": "tokenをブラウザへ渡さず、延長をPOSTのServer Functionに置く設計を示し、依頼が本質に反するので止まって提案する"}
+      ]
+    },
+    {
+      "id": "invalid-url-parameter",
+      "skill": "../plugins/react-convention/skills/implement-react-boundary/SKILL.md",
+      "messages": [{"role": "user", "content": "一覧の ?page= が数字でなかったら、とりあえず1ページ目を出しておいて。"}],
+      "criteria": [
+        {"id": "no-silent-rounding", "meaning": "値が無いときの既定値と、値が不正なときを分け、不正な値を黙って1ページ目へ丸めずに利用者に見える失敗にする。仕様が曖昧なら止まって提案する"}
+      ]
+    },
+    {
+      "id": "spa-without-rsc",
+      "skill": "../plugins/react-convention/skills/implement-react-boundary/SKILL.md",
+      "messages": [{"role": "user", "content": "ViteとReactだけのSPAで、蔵書の検索画面を作って。"}],
+      "criteria": [
+        {"id": "scope-by-runtime", "meaning": "Server Componentsを課さず、HTTPの入口の守り方、外から来た値、状態、副作用、ブラウザ側の防御の節だけを当てる"}
+      ]
+    },
+    {
+      "id": "duplicated-story-and-unit",
+      "skill": "../plugins/react-convention/skills/test-react-ui/SKILL.md",
+      "messages": [{"role": "user", "content": "一覧部品の空状態と延滞表示を、StorybookとVitestの両方でテストしている。自分のhookもvi.mockで差し替えている。"}],
+      "criteria": [
+        {"id": "one-layer", "meaning": "表示の状態はstoryとbrowser testだけに残し、単体テストの重複を消す"},
+        {"id": "no-own-code-mock", "meaning": "自分のhookの差し替えをやめ、外部の境界だけをHTTPの契約で差し替える形を示す"}
+      ]
+    }
+  ]
+}
