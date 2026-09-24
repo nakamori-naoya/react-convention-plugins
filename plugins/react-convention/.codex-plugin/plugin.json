@@ -1,0 +1,34 @@
+{
+  "name": "react-convention",
+  "version": "1.0.0",
+  "description": "React 19の画面・Server Function・Client部品を実装し、振る舞いを検証層へ割り当ててテストする",
+  "author": {
+    "name": "NaoyaNakamori"
+  },
+  "skills": [
+    "./skills/implement-react-boundary",
+    "./skills/test-react-ui"
+  ],
+  "interface": {
+    "displayName": "Reactの実装とテストの規約",
+    "shortDescription": "Server境界、外から来た値、テストの分担に沿ってReactを書く",
+    "longDescription": "秘密と認可をServerの内側に閉じ、Server Functionを独立した入口として扱い、外から来た値を丸めずに、React 19の画面と部品を実装します。振る舞いを一つの検証層へ割り当ててテストします。",
+    "developerName": "NaoyaNakamori",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Skills",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "この画面をServer境界の規約に沿って実装して。",
+      "このmutationをServer FunctionとActionで実装して。",
+      "この部品のテストを、どの層で書くか決めて書いて。"
+    ]
+  },
+  "metadata": {
+    "harness": {
+      "marketplace": "react-convention",
+      "contractVersion": 1
+    }
+  }
+}
