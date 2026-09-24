@@ -1,0 +1,29 @@
+# Server境界とread
+
+画面のreadを誰が持ち、境界を何が越えるかを決めるときに読む。
+
+## 境界を越えてよい値
+
+境界は好みではなく、実行時に成り立つかを決める物理的な制約である。ブラウザへ渡せるのは、plain DTO、正規化済みのID、boolean、有限の状態を表す文字列、Promise、Server Functionの参照である。秘密、APIキー、Bearer token、他人のsession、生成されたメッセージ型（Protobufのclassなど）、class instance、任意の関数、server用のclient、Error objectは越えられない。越えられない値をpropsへ入れると、境界で失敗するか、情報が漏れる。
+
+渡してよいかは、受け取る利用者がその値を本来持つべきかで決める。受取人へ配ること自体が目的の値（招待URLのtokenなど）は、Serverの秘密とは別に扱う。外へ配るURLは、backendが完全な形で返す。フロントでrequestのheaderからoriginを組み立てると、環境ごとに値がぶれる。
+
+## readの持ち主
+
+初期表示のreadはServer Componentが持つ。Server Componentは、認証済みの主体と正規のIDを受け取り、所属と表示可否を確かめ、表示に要るfieldだけを持つDTOへ変換して描く。
+
+Client部品にreadを持たせるのは、次のどれかが要求であるときだけである。queryの入力がブラウザにしか無い（browser storageの値など）。表示中に同じresourceを繰り返し取り直す。他者の変更を利用者の操作なしで反映する。同じresourceの複数ページを同時に保持する。応答の前に次の楽観的な更新が重なる。どれにも当たらないなら、画面をまたいでcacheを共有したいという理由だけでClientへ移さない。
+
+持ち主は一つにする。Serverが初期表示を描き、Clientのcacheが続きを持つ、という分け方をすると、二つのcacheが同じ事実を別々に持ち、どちらが正しいかが描画の順で変わる。Clientがreadを持つと決めたら、初期表示からClientが取得し、ServerのDTOを初期値として渡さない。
+
+Client側のcacheのkeyには、結果を変えるscope（利用者、session、所属など）を含める。tokenはkeyに入れない。logoutや所属の切り替えでは、そのscopeの値を捨てる。
+
+## 並行と待機
+
+一つの画面に独立したreadが複数あるなら、逐次awaitしない。意味のあるSectionに分け、兄弟として並行に始める。後のreadが前の結果を引数に要るときだけ直列にする。
+
+待機の境界（Suspense）は、request時に決まる値に触れる部分木の直上に置き、fallbackは実際の配置に近い形にする。失敗の境界（Error Boundary）は待機の境界の外側に置き、失敗したSectionだけが回復できるようにする。pageやlayoutの全体でrequest時のreadをawaitすると、画面の全体が待たされる。
+
+## 判断例（図書館の貸出）
+
+利用者の「借りている本」の一覧は、Server Componentが持つ。Server Componentは、認証済みの利用者IDで貸出を読み、書名、返却期限、延滞かどうかだけを持つDTOに変えて描く。貸出の内部IDの並びや、他の利用者の情報は渡さない。「延長する」ボタンだけがClientの葉で、押すと延長のServer Functionを呼ぶ。一覧を三十秒ごとに取り直す要求は無いので、Clientのcacheは持たない。延長の後は、Server Functionの成功を受けて、Serverの表示を描き直す。
