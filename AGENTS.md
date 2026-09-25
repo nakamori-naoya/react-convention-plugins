@@ -1,4 +1,4 @@
-> 作業を始める前に、workspace規約入口 `/Users/naoya-nakamoriq/Documents/Github/harness-pluginsv2/AGENTS.md` を読み、そこから指定される共通規約とこのrepository固有の規則を適用する。
+> 共通の規約は /Users/naoya-nakamoriq/Documents/Github/harness-pluginsv2/AGENTS.md にある。ここには、この repository だけの規則を置く。
 
 # AGENTS.md
 
@@ -7,9 +7,3 @@
 規約は、秘密と認可をServerの内側に閉じること、Server Functionを独立した入口として扱うこと、外から来た値を丸めないこと、描画を純粋に保つこと、一つの振る舞いを一つの層で確かめ自分のコードを差し替えないこと、から導く。特定の実行基盤（TanStack Start、Next.jsなど）、道具（Vitest、Storybook、Playwright、MSW）、案件の値は、判断例と `references` の中にだけ置き、既定値にしない。React Server Componentsを使えない構成でも、当てはまる節は使えるように書く。
 
 リポジトリ全体のテスト戦略、E2Eシナリオの設計、テストで差し替えてよい境界の言語に依らない原則は、このpackageの持ち物ではない。
-
-変更後は `bash scripts/validate.sh` と `bash /Users/naoya-nakamoriq/Documents/Github/harness-pluginsv2/scripts/validate.sh /Users/naoya-nakamoriq/Documents/Github/harness-pluginsv2/react-convention-plugins` を実行する。
-
-## 検査スクリプトは、意味が一意に決まることだけを判定する
-
-このrepositoryの検査スクリプト（validate、lint、verify、checkなど、名前を問わない）が判定してよいのは、ファイルや見出しの有無、識別子や版の一致、宣言と配置の対応、禁止された書き方の有無のように、入力と基準資料から意味が決定論的に一意に決まることだけである。読んで解釈しないと決まらないことや、件数や語の出現のような品質の代わりの指標は判定せず、エージェントが読んで評価する（意味評価）。判定が一意に決まることを宣言できない検査は作らず、詳しい条件は `/Users/naoya-nakamoriq/Documents/Github/harness-pluginsv2/.agents/rules/deterministic-validation.md` に従う。
