@@ -27,8 +27,7 @@
   },
   "metadata": {
     "harness": {
-      "marketplace": "react-convention",
-      "contractVersion": 1
+      "marketplace": "react-convention"
     }
   }
 }
