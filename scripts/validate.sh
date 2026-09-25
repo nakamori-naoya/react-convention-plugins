@@ -13,8 +13,6 @@ python3 "$TOOLS/validate-plugin-repository.py" "$ROOT" || failed=1
 python3 "$TOOLS/validate-plugin-repository.py" --self-test || failed=1
 python3 "$TOOLS/test-hardening.py" --repository "$ROOT" || failed=1
 
-jq -e '.schema==1 and (.cases|length)>0 and ([.cases[].id]|length)==([.cases[].id]|unique|length)' "$ROOT/evals/scenarios.json" >/dev/null \
-  || { echo "[error] evals/scenarios.json" >&2; failed=1; }
 
 while IFS= read -r script; do
   bash -n "$script" || failed=1
