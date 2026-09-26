@@ -3,12 +3,12 @@
   "owner": {
     "name": "NaoyaNakamori"
   },
-  "description": "Reactのフロントエンドを、Server境界、外から来た値、テストの分担の規約に沿って実装・検証する単一package marketplace",
+  "description": "Reactのフロントエンドを、業務の資料を写し、秘密をServerに閉じ、外から来た値を丸めない規約で実装・検証する単一package marketplace",
   "plugins": [
     {
       "name": "react-convention",
       "source": "./plugins/react-convention",
-      "description": "React 19の画面・Server Function・Client部品を実装し、振る舞いを検証層へ割り当ててテストするskillを提供する",
+      "description": "React 19の画面の表示と利用者の操作を、業務の資料から受け取ったものだけで組み立て、テストと実装の一続きで仕上げる",
       "version": "1.1.0"
     }
   ]

@@ -1,13 +1,12 @@
 {
   "name": "react-convention",
   "version": "1.1.0",
-  "description": "React 19の画面・Server Function・Client部品を実装し、振る舞いを検証層へ割り当ててテストする",
+  "description": "React 19の画面の表示と利用者の操作を、業務の資料から受け取ったものだけで組み立て、テストと実装の一続きで仕上げる",
   "author": {
     "name": "NaoyaNakamori"
   },
   "skills": [
-    "./skills/implement-react-boundary",
-    "./skills/test-react-ui"
+    "./skills/develop-react-frontend"
   ],
   "metadata": {
     "harness": {

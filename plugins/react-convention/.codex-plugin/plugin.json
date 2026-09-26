@@ -1,18 +1,17 @@
 {
   "name": "react-convention",
   "version": "1.1.0",
-  "description": "React 19の画面・Server Function・Client部品を実装し、振る舞いを検証層へ割り当ててテストする",
+  "description": "React 19の画面の表示と利用者の操作を、業務の資料から受け取ったものだけで組み立て、テストと実装の一続きで仕上げる",
   "author": {
     "name": "NaoyaNakamori"
   },
   "skills": [
-    "./skills/implement-react-boundary",
-    "./skills/test-react-ui"
+    "./skills/develop-react-frontend"
   ],
   "interface": {
     "displayName": "Reactの実装とテストの規約",
-    "shortDescription": "Server境界、外から来た値、テストの分担に沿ってReactを書く",
-    "longDescription": "秘密と認可をServerの内側に閉じ、Server Functionを独立した入口として扱い、外から来た値を丸めずに、React 19の画面と部品を実装します。振る舞いを一つの検証層へ割り当ててテストします。",
+    "shortDescription": "業務の資料を写し、秘密をServerに閉じ、外から来た値を丸めずにReactを書く",
+    "longDescription": "画面は業務の資料が決めたものをその順で見せ、秘密と認可をServerの内側に閉じ、読み取りと更新の持ち主を一つにし、外から来た値を丸めずに、React 19の画面と操作を実装します。テストは失敗を再現できる最小の層に一度だけ書きます。",
     "developerName": "NaoyaNakamori",
     "category": "Developer Tools",
     "capabilities": [
@@ -20,9 +19,9 @@
       "Write"
     ],
     "defaultPrompt": [
-      "この画面をServer境界の規約に沿って実装して。",
-      "このmutationをServer FunctionとActionで実装して。",
-      "この部品のテストを、どの層で書くか決めて書いて。"
+      "この画面を実装して。",
+      "この操作をServer Functionとformで書いて。",
+      "この部品のテストをどこで書くか決めて直して。"
     ]
   },
   "metadata": {
