@@ -55,7 +55,7 @@ Client にするのは、利用者の event、ブラウザの API、state、送�
 
 ## テストは、失敗を再現できる最小の層に一度だけ書く
 
-差し替えてよい境界と、最小の層に置く原則は、testing-strategy の design-test-strategy の test-strategy-judgment.md が持つ。差し替えてよいのは制御できない外部、時計、採番だけなので、自分の部品、hook、Server Function、router、自分の backend は差し替えない。外部の HTTP を差し替えるときは、MSW のように要求と応答の形で差し替える仕組みを使う。
+差し替えてよい境界と、最小の層に置く原則は、testing-strategy の design-test-strategy の test-strategy-judgment.md が持つ。自分の部品、hook、Server Function、router は差し替えない。backend は、その資料が差し替えてよいとする別の配備単位にある境界に当たるので、制御できない外部の HTTP と同じく MSW で差し替えてよい。
 
 React ではこれを次のように当てる。純粋な関数は、単体テストで全分岐を確かめる。表示だけを担う部品は、有限の状態ごとの story とその browser test で、見た目、一つの操作、accessibility を確かめる。props だけで状態を作れるので、何も差し替えずに済む。Server Function、router、backend をつなぐ配線は、production build に実際の認証と backend をつないだ E2E で確かめ、業務の境界値はそこで網羅しない。つなぐ部品を Server Function や router の偽物で包んだ部品のテストは書かない。偽物が本物とずれても緑のままだからである。どの経路を E2E に残すかは testing-strategy の design-e2e-test-scenarios が決め、E2E のテストはそのシナリオの ID を名前に持つ。
 
