@@ -1,6 +1,6 @@
 {
   "name": "react-convention",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "React 19の画面の表示と利用者の操作を、業務の資料から受け取ったものだけで組み立て、テストと実装の一続きで仕上げる",
   "author": {
     "name": "NaoyaNakamori"
